@@ -66,7 +66,7 @@ end
 #     end
 
 # end
-
+require 'byebug'
 def better_lcs(list)
     i1 = 0
     i2 = 0
@@ -75,15 +75,16 @@ def better_lcs(list)
         current_sum = list[i1..i2].sum
         largest = current_sum if current_sum > largest
         i2 += 1
+        # debugger
         if (i2 == list.length - 1) && (i1 != list.length - 1)
             i1 += 1
             i2 = i1
-            current_sum = list[i1..i2].sum
-            largest = current_sum if current_sum > largest
+            # current_sum = list[i1..i2].sum
+            # largest = current_sum if current_sum > largest
         end
-        # if (i2 == list.length - 1) && (i1 == list.length - 1)
-        #     break
-        # end
+        if i2 >= list.length
+            break
+        end
     end
     return largest
 end
